@@ -11,4 +11,9 @@ export default createTheme({
       'sans-serif',
     ].join(','),
   },
+  palette: {
+    primary: {
+      main: 'rgb(0, 92, 134)',
+    },
+  },
 });
