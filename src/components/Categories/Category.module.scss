@@ -1,0 +1,14 @@
+.root {
+  padding: 4px 10px;
+  font-size: 0.9em;
+  &:hover {
+    cursor: pointer;
+  }
+  & > * {
+    font-weight: 400;
+    padding-bottom: 2px;
+    &:hover {
+      border-bottom: 2px solid black;
+    }
+  }
+}
