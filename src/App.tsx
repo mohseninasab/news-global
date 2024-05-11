@@ -1,14 +1,6 @@
-import Header from 'src/components/Header/Header';
-import { Grid } from '@mui/material';
-import FrontPage from './Pages/FrontPage';
+import { RouterProvider } from 'react-router-dom';
+import routes from './router';
 
-function App() {
-  return (
-    <Grid container sx={{ px: { xs: 0, md: 2, lg: 20 } }}>
-      <Header />
-      <FrontPage />
-    </Grid>
-  );
-}
+const App = () => <RouterProvider router={routes} />;
 
 export default App;

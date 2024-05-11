@@ -11,8 +11,12 @@ export default function ReadTime(props: Props) {
   }, [props.children]);
 
   return (
-    <Typography color="textSecondary" variant="caption">
-      {Math.max(time, 1)} MIN READ
+    <Typography
+      sx={{ fontSize: '0.7em' }}
+      color="textSecondary"
+      variant="caption"
+    >
+      {Math.max(time, 1) || 1} MIN READ
     </Typography>
   );
 }

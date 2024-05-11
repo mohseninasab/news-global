@@ -1,16 +1,25 @@
-import type { GuardianSection } from 'src/types/GuardianArticles';
+import { useSearchParams } from 'react-router-dom';
 import classes from './Category.module.scss';
 
 interface Props {
-  section?: GuardianSection;
+  category?: string;
 }
 
 export default function Category(props: Props) {
-  const { section } = props;
+  const { category = '' } = props;
+  const [searchParams, setSearchParams] = useSearchParams();
+  const cat = searchParams.get('category') || undefined;
 
+  const setCategory = () => {
+    setSearchParams({ category });
+  };
   return (
-    <li className={classes.root}>
-      <a>{section?.webTitle}</a>
+    <li
+      data-selected={cat === category}
+      onClick={setCategory}
+      className={classes.root}
+    >
+      <a>{category}</a>
     </li>
   );
 }
