@@ -22,7 +22,7 @@ export const newsApi = createApi({
             url: '/everything',
             params: { q, source, category, from },
           };
-        return { url: '/everything' };
+        return { url: '/everything?q=usa' };
       },
     }),
     newsApiGetSources: builder.query<SourcesApi, SourceParams>({

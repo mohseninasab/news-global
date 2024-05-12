@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import classes from './Category.module.scss';
 
 interface Props {
@@ -6,11 +6,13 @@ interface Props {
 }
 
 export default function Category(props: Props) {
+  const navigate = useNavigate();
   const { category = '' } = props;
   const [searchParams, setSearchParams] = useSearchParams();
   const cat = searchParams.get('category') || undefined;
 
   const setCategory = () => {
+    navigate('/');
     setSearchParams({ category });
   };
   return (

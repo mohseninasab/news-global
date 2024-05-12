@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 
 interface Props {
   title: string;
-  url: string;
+  url?: string;
 }
 
 export default function NewsHeadline(props: Props) {

@@ -1,6 +1,7 @@
 .root {
   padding: 4px 10px;
   font-size: 0.9em;
+  user-select: none;
   &:hover {
     cursor: pointer;
   }
