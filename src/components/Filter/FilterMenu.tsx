@@ -4,7 +4,7 @@ import { FormEvent } from 'src/types/Event';
 import { useSearchParams } from 'react-router-dom';
 import { useNewsApiGetSourcesQuery } from 'src/services/NewsApi';
 import { MenuItem } from '@mui/material';
-import CATEGORIES from 'src/constances/categories';
+import CATEGORIES from 'src/constant/categories';
 import firstLetterUppercase from 'src/Utils/firstLetterUppercase';
 
 export default function FilterMenu() {

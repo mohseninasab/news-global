@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import CATEGORIES from 'src/constances/categories';
+import CATEGORIES from 'src/constant/categories';
 import Category from './Category';
 
 export default function Cathegory() {

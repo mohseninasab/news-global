@@ -5,6 +5,13 @@ export interface NewsApiParams {
   source?: string | null;
   page?: number | null;
 }
+export interface TopLineParams {
+  country?: string;
+  category?: string;
+  q?: string;
+  pageSize?: string;
+  page?: string;
+}
 
 export interface SourceParams {
   category?:
@@ -14,7 +21,8 @@ export interface SourceParams {
     | 'health'
     | 'science'
     | 'sports'
-    | 'technology';
+    | 'technology'
+    | undefined;
   language?:
     | 'ar'
     | 'de'
@@ -29,7 +37,8 @@ export interface SourceParams {
     | 'ru'
     | 'sv'
     | 'ud'
-    | 'zh';
+    | 'zh'
+    | undefined;
   country?:
     | 'ae'
     | 'ar'
@@ -84,7 +93,8 @@ export interface SourceParams {
     | 'ua'
     | 'us'
     | 've'
-    | 'za';
+    | 'za'
+    | undefined;
 }
 
 interface Source {
