@@ -1,0 +1,1 @@
+sudo docker build -t worldnews:$1 -f Dockerfile .;
