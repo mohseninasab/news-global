@@ -4,6 +4,7 @@ import type {
   NewsApiParams,
   SourceParams,
   SourcesApi,
+  TopLineParams,
 } from 'src/types/NewsApiArticles';
 
 const baseUrl = import.meta.env.VITE_NEWSAPI_BASE_URL;
@@ -30,6 +31,16 @@ export const newsApi = createApi({
         params,
       }),
     }),
+    newsApiGetTopHeadlines: builder.query<NewsApiArticle, TopLineParams>({
+      query: (params: TopLineParams) => ({
+        url: '/top-headlines',
+        params,
+      }),
+    }),
   }),
 });
-export const { useNewsApiGetAllNewsQuery, useNewsApiGetSourcesQuery } = newsApi;
+export const {
+  useNewsApiGetAllNewsQuery,
+  useNewsApiGetSourcesQuery,
+  useNewsApiGetTopHeadlinesQuery,
+} = newsApi;
