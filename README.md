@@ -1,4 +1,4 @@
-# World News (React + TypeScript + Vite)
+# News Global (React + TypeScript + Vite)
 
 A News Web Application based on public news apis like newsApi and Guardian ...
 

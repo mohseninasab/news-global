@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    container_name: worldnews_c
+    container_name: newsglobal_c
     ports:
       - 3000:3000
     stdin_open: true

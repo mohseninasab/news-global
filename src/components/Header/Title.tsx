@@ -16,7 +16,7 @@ export default function Title() {
       }}
       variant="h1"
     >
-      <span>T</span>&#8201;he <span>W</span>orld <span>N</span>ews
+      <span>T</span>&#8201;he <span>N</span>ews <span>G</span>lobal
     </Typography>
   );
 }
