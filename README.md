@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# World News (React + TypeScript + Vite)
 
-Currently, two official plugins are available:
+A News Web Application based on public news apis line newsApi and Guardian ...
+ 
+ Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Runing app with pnpm
+Install [**pnpm package manager**](https://pnpm.io/installation) and run the command below at the root of the project
+```cmd
+ pnpm install
+ ```
+ After that run the command below to serve the app on port **3000**
+```cmd
+ pnpm run dev
+ ```  
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Runing app with Docker
+To run the app inside **docker,** run the command below in Termian. The **docker-compose.yaml** file would install dependencies, the **pnpm package manager**, create an image and expose the app on port **3000**
+```cmd
+ sudo docker compose up
+ ```
