@@ -1,8 +1,13 @@
+export interface NewsApiParams {
+  q?: string;
+  country?: string;
+}
+
 interface Source {
   id: string;
   name: string;
 }
-export interface Article {
+export interface NewsApiArticle {
   source: Source;
   author: string;
   title: string;
@@ -13,8 +18,8 @@ export interface Article {
   content: string;
 }
 
-export default interface Articles {
+export default interface NewsApiArticles {
   status: string;
   totalResults: 16032;
-  articles: Article[];
+  articles: NewsApiArticle[];
 }
