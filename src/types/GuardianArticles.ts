@@ -1,5 +1,8 @@
 export interface GuardinaApiParams {
-  q?: string;
+  q?: string | null;
+  section?: string | null;
+  'from-date'?: string | null;
+  page?: number | null;
 }
 
 export interface GuardinaArticle {

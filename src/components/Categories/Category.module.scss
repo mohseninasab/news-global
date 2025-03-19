@@ -11,4 +11,9 @@
       border-bottom: 2px solid black;
     }
   }
+  &[data-selected='true'] {
+    & > * {
+      border-bottom: 2px solid black;
+    }
+  }
 }

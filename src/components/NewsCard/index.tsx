@@ -16,7 +16,7 @@ export default function NewsCard(props: Props) {
   const { title, url, urlToImage, content } = props.article;
   const [text, time] = useMemo(() => ExtractTimeAndContent(content), [content]);
   return (
-    <Grid container sx={{ ...props.sx, p: { sx: 2, lg: 0 } }}>
+    <Grid container spacing={1} sx={{ ...props.sx, p: { sx: 2, lg: 0 } }}>
       <Grid item xs={12} md={8}>
         <NewsHeadline title={title} url={url} />
         <Content>{text}</Content>
