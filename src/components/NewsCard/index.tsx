@@ -8,6 +8,7 @@ import { useMemo } from 'react';
 import Source from 'src/components/Source';
 import { ExtractTimeAndContent } from 'src/Utils/ExtractTimeAndContent';
 import Author from 'src/components/Author';
+import { Link } from 'react-router-dom';
 
 interface Props {
   article: NewsApiArticle;
@@ -15,31 +16,41 @@ interface Props {
 }
 
 export default function NewsCard(props: Props) {
-  const { title, url, urlToImage, content, source, author } = props.article;
+  const { title, urlToImage, content, source, author } = props.article;
   const [text, time] = useMemo(
     () => ExtractTimeAndContent(content || ''),
     [content],
   );
   return (
-    <Grid container spacing={1} sx={{ ...props.sx, p: { sx: 2, lg: 0 } }}>
-      <Grid item xs={12} md={8}>
-        <NewsHeadline title={title} url={url} />
-        <Content>{text}</Content>
-        <Grid container spacing={1}>
-          <Grid item>
-            <ReadTime>{time}</ReadTime>
-          </Grid>
-          <Grid item>
-            <Source>{source.name}</Source>
-          </Grid>
-          <Grid item>
-            <Author>{author}</Author>
+    <Link to="/newspage" state={{ article: props.article }}>
+      <Grid
+        container
+        spacing={1}
+        sx={{
+          ...props.sx,
+          p: { sx: 2, lg: 0 },
+          '&:hover': { cursor: 'pointer' },
+        }}
+      >
+        <Grid item xs={12} md={8}>
+          <NewsHeadline title={title} />
+          <Content>{text}</Content>
+          <Grid container spacing={1}>
+            <Grid item>
+              <ReadTime>{time}</ReadTime>
+            </Grid>
+            <Grid item>
+              <Source>{source.name}</Source>
+            </Grid>
+            <Grid item>
+              <Author>{author}</Author>
+            </Grid>
           </Grid>
         </Grid>
+        <Grid item xs={12} md={4}>
+          {urlToImage && <NewsImage src={urlToImage} />}
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={4}>
-        {urlToImage && <NewsImage src={urlToImage} url={url} />}
-      </Grid>
-    </Grid>
+    </Link>
   );
 }

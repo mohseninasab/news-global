@@ -1,7 +1,7 @@
 import classes from './NewsImage.module.scss';
 
 interface Props {
-  url: string;
+  url?: string;
   src: string;
 }
 export default function NewsImage(props: Props) {
