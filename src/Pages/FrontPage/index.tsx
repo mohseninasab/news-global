@@ -9,8 +9,8 @@ export default function FrontPage() {
     <PageFrame>
       <Header />
       <Filter />
-      <Body />
       <TopHeadLines />
+      <Body />
     </PageFrame>
   );
 }

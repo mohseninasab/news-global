@@ -5,7 +5,7 @@ import { NewsApiArticle } from 'src/types/NewsApiArticles';
 
 type Args = GuardinResponse<GuardianArticles> | undefined;
 
-export default function exportDate(news: Args): NewsApiArticles {
+export default function convertGardianArticles(news: Args): NewsApiArticles {
   const response = news?.response;
   return {
     status: response?.status || '200',
@@ -23,7 +23,7 @@ export default function exportDate(news: Args): NewsApiArticles {
           url: news.webUrl,
           urlToImage: '',
           publishedAt: news.webPublicationDate,
-          content: '',
+          content: news.webTitle,
         }),
       ) || [],
   };

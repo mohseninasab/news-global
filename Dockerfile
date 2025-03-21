@@ -1,4 +1,4 @@
-FROM node:20-alpine3.19
+FROM node:23-alpine3.20
 WORKDIR /app
 COPY . .
 RUN npm install -g pnpm && pnpm i
