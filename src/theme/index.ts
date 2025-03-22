@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material';
 export default createTheme({
   typography: {
     fontFamily: [
+      'cheltenham',
       'merriweather',
       'system-ui',
       'Avenir',

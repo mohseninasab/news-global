@@ -1,14 +1,14 @@
-import { ReactElement } from 'react';
-import { Grid } from '@mui/material';
+import { ReactNode } from 'react';
+import Grid from '@mui/material/Grid2';
 
 interface Props {
-  children?: ReactElement[] | ReactElement | string;
+  children?: ReactNode;
 }
 
 export default function PageFrame(props: Props) {
   return (
-    <Grid container sx={{ px: { xs: 1, md: 2, lg: 15 } }}>
-      {props.children}
+    <Grid sx={{ px: { xs: 2, md: 0 } }} container justifyContent="center">
+      <Grid size={{ xs: 12, md: 11, lg: 9 }}>{props.children}</Grid>
     </Grid>
   );
 }

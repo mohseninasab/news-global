@@ -1,27 +1,39 @@
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import classes from './Category.module.scss';
+import {
+  useNavigate,
+  useSearchParams,
+  type URLSearchParamsInit,
+} from 'react-router-dom';
+import ListItem from '../ListItem';
 
 interface Props {
   category?: string;
 }
 
 export default function Category(props: Props) {
-  const navigate = useNavigate();
   const { category = '' } = props;
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const cat = searchParams.get('category') || undefined;
+
+  const q = searchParams.get('q') || '';
+  const cat = searchParams.get('cat') || '';
+  const source = searchParams.get('source') || '';
+  const date = searchParams.get('date') || '';
+  const country = searchParams.get('country') || '';
 
   const setCategory = () => {
     navigate('/');
-    setSearchParams({ category });
+    const params: URLSearchParamsInit = { cat: category };
+
+    if (q) params.q = q;
+    if (country) params.country = country;
+    if (source) params.source = source;
+    if (date) params.date = date;
+
+    setSearchParams(params);
   };
   return (
-    <li
-      data-selected={cat === category}
-      onClick={setCategory}
-      className={classes.root}
-    >
-      <a>{category}</a>
-    </li>
+    <ListItem data-selected={cat === category} onClick={setCategory}>
+      {category}
+    </ListItem>
   );
 }

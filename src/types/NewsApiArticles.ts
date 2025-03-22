@@ -4,6 +4,7 @@ export interface NewsApiParams {
   date?: string | null;
   source?: string | null;
   page?: number | null;
+  country?: string | null;
 }
 export interface TopLineParams {
   country?: string;

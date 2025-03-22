@@ -1,55 +1,32 @@
-import { useMemo } from 'react';
-import Grid from '@mui/material/Grid';
-import { useNewsApiGetAllNewsQuery } from 'src/services/NewsApi';
-import { useSearchParams } from 'react-router-dom';
-import { useGetGuardianNewsQuery } from 'src/services/Guardian';
-import convertGardianArticles from 'src/Utils/convertGardianArticles';
-import mapGuardinaParams from 'src/Utils/mapGuardinaParams';
-import NewsCard from 'src/components/NewsCard';
-import { useNewsDataGetAllNewsQuery } from 'src/services/NewsData';
-import { convertNewsDataArticles } from 'src/Utils/convertNewsDataArticles';
+import Grid from '@mui/material/Grid2';
+import TopHeadLines from 'src/Pages/TopHeadLines';
+import DropHead from './DropHead';
+import Line from 'src/components/Line';
+import AllNews from './AllNews';
 
 export default function Body() {
-  const [searchParams] = useSearchParams();
-  const q = searchParams.get('q') || undefined;
-  const category = searchParams.get('category') || undefined;
-  const date = searchParams.get('date') || undefined;
-  const source = searchParams.get('source') || undefined;
-
-  const apiNews = useNewsApiGetAllNewsQuery({ q, category, date, source });
-  const newsData = useNewsDataGetAllNewsQuery({ q, category, date, source });
-  const guardian = useGetGuardianNewsQuery(
-    mapGuardinaParams({ q, category, date, source }),
-  );
-  const guardianNews = useMemo(
-    () => convertGardianArticles(guardian.data),
-    [guardian],
-  );
-
-  const newsDataArticles = useMemo(() => {
-    if (newsData.data) return convertNewsDataArticles(newsData.data);
-    return { articles: [], status: 'failed' };
-  }, [newsData]);
-
   return (
-    <Grid container spacing={2} sx={{ my: 1 }}>
-      {(apiNews?.data?.articles || []).map((article) => (
-        <Grid key={article.title} item sm={12} md={6}>
-          <NewsCard article={article} />
-        </Grid>
-      ))}
-
-      {(newsDataArticles.articles || []).map((article) => (
-        <Grid key={article.title} item sm={12} md={6}>
-          <NewsCard article={article} />
-        </Grid>
-      ))}
-
-      {(guardianNews.articles || []).map((article) => (
-        <Grid key={article.title} item sm={12} md={6}>
-          <NewsCard article={article} />
-        </Grid>
-      ))}
+    <Grid container spacing={2}>
+      <Grid
+        container
+        sx={{ height: 'fit-content' }}
+        spacing={3}
+        size={{ xs: 12, md: 12, lg: 9 }}
+      >
+        <Line color="primary" size={12} />
+        <TopHeadLines />
+        <AllNews />
+      </Grid>
+      <Line color="secondary" vertical />
+      <Grid
+        container
+        alignItems="start"
+        spacing={2}
+        sx={{ flex: { xs: 'auto', md: 1 }, height: 'fit-content' }}
+      >
+        <Line color="primary" size={12} />
+        <DropHead />
+      </Grid>
     </Grid>
   );
 }

@@ -25,41 +25,43 @@ export default function NewsPage(props: Props) {
 
   if (state.article.title) {
     return (
-      <PageFrame>
+      <>
         <Header />
-        <Grid
-          container
-          spacing={1}
-          sx={{
-            ...props.sx,
-            p: { sx: 2, lg: 0 },
-            mt: 2,
-          }}
-        >
-          <Grid item xs={12} lg={4}>
-            <NewsHeadline url={url} title={title} />
-            <Content>{text}</Content>
-            <Grid container spacing={1}>
-              <Grid item>
-                <ReadTime>{time}</ReadTime>
-              </Grid>
-              <Grid item>
-                <Source>{source.name}</Source>
-              </Grid>
-              <Grid item>
-                <Author>{author}</Author>
+        <PageFrame>
+          <Grid
+            container
+            spacing={1}
+            sx={{
+              ...props.sx,
+              p: { sx: 2, lg: 0 },
+              mt: 2,
+            }}
+          >
+            <Grid item xs={12} lg={4}>
+              <NewsHeadline url={url} title={title} />
+              <Content>{text}</Content>
+              <Grid container spacing={1}>
+                <Grid item>
+                  <ReadTime>{time}</ReadTime>
+                </Grid>
+                <Grid item>
+                  <Source>{source.name}</Source>
+                </Grid>
+                <Grid item>
+                  <Author>{author}</Author>
+                </Grid>
               </Grid>
             </Grid>
+            <Grid item xs={12} lg={8}>
+              {urlToImage && (
+                <a target="_blank" href={url}>
+                  <img width="100%" alt="news-image" src={urlToImage} />
+                </a>
+              )}
+            </Grid>
           </Grid>
-          <Grid item xs={12} lg={8}>
-            {urlToImage && (
-              <a target="_blank" href={url}>
-                <img width="100%" alt="news-image" src={urlToImage} />
-              </a>
-            )}
-          </Grid>
-        </Grid>
-      </PageFrame>
+        </PageFrame>
+      </>
     );
   } else
     return (

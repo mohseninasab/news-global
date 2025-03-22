@@ -7,7 +7,7 @@ interface Props {
 export default function Source(props: Props) {
   return (
     <Typography
-      sx={{ fontSize: '0.8em', fontWeight: 'bold' }}
+      sx={{ fontSize: '0.6em', fontWeight: 'bold' }}
       color="secondary"
       variant="caption"
     >

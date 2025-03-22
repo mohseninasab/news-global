@@ -1,5 +1,4 @@
 import Typography from '@mui/material/Typography';
-import classes from './Title.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 export default function Title() {
@@ -7,16 +6,17 @@ export default function Title() {
   return (
     <Typography
       onClick={() => navigate('/')}
-      className={classes.root}
       align="center"
       sx={{
+        letterSpacing: { xs: -2, md: -5 },
         fontFamily: 'lobster',
         userSelect: 'none',
+        fontSize: { xs: 40, md: 100 },
+        lineHeight: 0.9,
         '&:hover': { cursor: 'pointer' },
       }}
-      variant="h1"
     >
-      <span>T</span>&#8201;he <span>N</span>ews <span>G</span>lobal
+      The News Global
     </Typography>
   );
 }

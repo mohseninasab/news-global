@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'cheltenham cond';
+  font-weight: 300;
+  font-style: normal;
+  src: url(cheltenham-cond-normal-300.ttf);
+}
+@font-face {
+  font-family: 'cheltenham cond';
+  font-weight: 300;
+  font-style: normal;
+  src: url(cheltenham-cond-normal-500.ttf);
+}
+@font-face {
+  font-family: 'cheltenham cond';
+  font-weight: 300;
+  font-style: normal;
+  src: url(cheltenham-cond-normal-700.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 200;
+  font-style: italic;
+  src: url(cheltenham-italic-200.ttf);
+}
+@font-face {
+  font-family: cheltenham;
+  font-weight: 300;
+  font-style: italic;
+  src: url(cheltenham-italic-300.ttf);
+}
+@font-face {
+  font-family: cheltenham;
+  font-weight: 400;
+  font-style: italic;
+  src: url(cheltenham-italic-400.ttf);
+}
+@font-face {
+  font-family: cheltenham;
+  font-weight: 500;
+  font-style: italic;
+  src: url(cheltenham-italic-500.ttf);
+}
+@font-face {
+  font-family: cheltenham;
+  font-weight: 600;
+  font-style: italic;
+  src: url(cheltenham-italic-600.ttf);
+}
+@font-face {
+  font-family: cheltenham;
+  font-weight: 700;
+  font-style: italic;
+  src: url(cheltenham-italic-700.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 800;
+  font-style: italic;
+  src: url(cheltenham-italic-800.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 200;
+  font-style: normal;
+  src: url(cheltenham-normal-200.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 300;
+  font-style: normal;
+  src: url(cheltenham-normal-300.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 400;
+  font-style: normal;
+  src: url(cheltenham-normal-400.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 500;
+  font-style: normal;
+  src: url(cheltenham-normal-500.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 600;
+  font-style: normal;
+  src: url(cheltenham-normal-600.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 700;
+  font-style: normal;
+  src: url(cheltenham-normal-700.ttf);
+}
+
+@font-face {
+  font-family: cheltenham;
+  font-weight: 800;
+  font-style: normal;
+  src: url(cheltenham-normal-800.ttf);
+}
