@@ -4,12 +4,14 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import ListItem from '../ListItem';
+import { SxProps } from '@mui/material';
 
 interface Props {
   region: { label: string; value: string };
+  sx?: SxProps;
 }
 
-export default function Region({ region }: Props) {
+export default function Region({ region, sx = {} }: Props) {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -32,6 +34,7 @@ export default function Region({ region }: Props) {
   };
   return (
     <ListItem
+      sx={sx}
       data-selected={country && country === region.value}
       onClick={setCategory}
     >

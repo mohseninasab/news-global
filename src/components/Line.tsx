@@ -7,7 +7,7 @@ interface Props extends Grid2Props {
   vertical?: boolean;
 }
 
-const Line = ({ color = 'secondary', vertical, ...rest }: Props) => {
+const Line = ({ color = 'secondary', vertical, sx, ...rest }: Props) => {
   const _colors = {
     primary: colors.grey[900],
     secondary: colors.grey[400],
@@ -23,6 +23,7 @@ const Line = ({ color = 'secondary', vertical, ...rest }: Props) => {
         [vertical ? 'borderRightWidth' : 'borderTopWidth']: `1px`,
         [vertical ? 'borderRightStyle' : 'borderTopStyle']: 'solid',
         borderColor,
+        ...sx,
       }}
     />
   );

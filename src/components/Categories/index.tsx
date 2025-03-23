@@ -1,12 +1,27 @@
-import { List } from '@mui/material';
+import { List, SxProps } from '@mui/material';
 import CATEGORIES from 'src/constant/categories';
 import Category from './Category';
 
-export default function Cathegory() {
+interface ListItemProps {
+  sx?: SxProps;
+}
+interface Props {
+  sx?: SxProps;
+  listItemProps?: ListItemProps;
+}
+
+export default function Cathegory({ sx = {}, listItemProps = {} }: Props) {
   return (
-    <List sx={{ display: { xs: 'none', md: 'flex', gap: 4 } }}>
+    <List
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: { xs: 'center' },
+        ...sx,
+      }}
+    >
       {CATEGORIES.map((category) => (
-        <Category key={category} category={category} />
+        <Category {...listItemProps} key={category} category={category} />
       ))}
     </List>
   );

@@ -1,6 +1,6 @@
-import { colors, styled, SxProps } from '@mui/material';
+import { colors, styled, SxProps, useMediaQuery } from '@mui/material';
 
-const Link = styled('a')({
+const styles = {
   borderRadius: 2,
   backgroundColor: colors.grey[100],
   display: 'block',
@@ -10,7 +10,10 @@ const Link = styled('a')({
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
-});
+};
+
+const Link = styled('a')(styles);
+const Img = styled('div')(styles);
 
 interface Props {
   url?: string;
@@ -19,12 +22,12 @@ interface Props {
 }
 
 export default function NewsImage(props: Props) {
+  const matches = useMediaQuery('print');
   const { url, src, sx = {} } = props;
-  return (
-    <Link
-      target="_blank"
-      href={url}
-      sx={{ backgroundImage: `url(${src})`, ...sx }}
-    />
-  );
+  const backgroundImage = `url(${src})`;
+
+  if (matches) return null;
+  if (url)
+    return <Link target="_blank" href={url} sx={{ backgroundImage, ...sx }} />;
+  return <Img sx={{ backgroundImage, ...sx }} />;
 }

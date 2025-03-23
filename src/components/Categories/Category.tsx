@@ -4,13 +4,15 @@ import {
   type URLSearchParamsInit,
 } from 'react-router-dom';
 import ListItem from '../ListItem';
+import { SxProps } from '@mui/material';
 
 interface Props {
   category?: string;
+  sx?: SxProps;
 }
 
 export default function Category(props: Props) {
-  const { category = '' } = props;
+  const { category = '', sx = {} } = props;
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -32,7 +34,7 @@ export default function Category(props: Props) {
     setSearchParams(params);
   };
   return (
-    <ListItem data-selected={cat === category} onClick={setCategory}>
+    <ListItem sx={sx} data-selected={cat === category} onClick={setCategory}>
       {category}
     </ListItem>
   );

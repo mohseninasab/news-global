@@ -1,6 +1,6 @@
 import { NewsApiArticle } from 'src/types/NewsApiArticles';
 import NewsHeadline from 'src/components/NewsCard/NewsHeadline';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import NewsImage from 'src/components/NewsCard/NewsImage';
 import Content from 'src/components/NewsCard/Content';
 import ReadTime from 'src/components/ReadTime';
@@ -32,22 +32,22 @@ export default function NewsCard({ article, sx }: Props) {
           '&:hover': { cursor: 'pointer' },
         }}
       >
-        <Grid item xs={12} md={8}>
+        <Grid size={{ xs: 12, md: 8 }}>
           <NewsHeadline title={title} />
           <Content>{text}</Content>
           <Grid container spacing={1}>
-            <Grid item>
+            <Grid>
               <ReadTime>{time}</ReadTime>
             </Grid>
-            <Grid item>
+            <Grid>
               <Source>{source.name}</Source>
             </Grid>
-            <Grid item>
+            <Grid>
               <Author>{author}</Author>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }}>
           <NewsImage src={urlToImage} />
         </Grid>
       </Grid>

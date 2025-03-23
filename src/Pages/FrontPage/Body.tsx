@@ -3,8 +3,10 @@ import TopHeadLines from 'src/Pages/TopHeadLines';
 import DropHead from './DropHead';
 import Line from 'src/components/Line';
 import AllNews from './AllNews';
+import { useMediaQuery } from '@mui/material';
 
 export default function Body() {
+  const matches = useMediaQuery('(min-width:1200px)');
   return (
     <Grid container spacing={2}>
       <Grid
@@ -17,7 +19,8 @@ export default function Body() {
         <TopHeadLines />
         <AllNews />
       </Grid>
-      <Line color="secondary" vertical />
+      {matches && <Line color="secondary" vertical />}
+
       <Grid
         container
         alignItems="start"

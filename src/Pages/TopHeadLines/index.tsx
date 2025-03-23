@@ -1,11 +1,13 @@
 import { useSearchParams } from 'react-router-dom';
 import Grid from '@mui/material/Grid2';
-import { useNewsApiGetTopHeadlinesQuery } from 'src/services/NewsApi';
+import { useNewsApiGetTopHeadlinesQuery as api } from 'src/services/NewsApi';
 import NewsCard from 'src/components/NewsCard';
 import TopNews from 'src/components/TopNews';
 import Line from 'src/components/Line';
 import { Typography } from '@mui/material';
 import { FaFireAlt } from 'react-icons/fa';
+import { useMemo } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function TopHeadLines() {
   const [searchParams] = useSearchParams();
@@ -14,14 +16,15 @@ export default function TopHeadLines() {
   const category = searchParams.get('cat') || undefined;
   const country = searchParams.get('country') || undefined;
 
-  const { data = { articles: [] } } = useNewsApiGetTopHeadlinesQuery({
-    q,
-    country,
-    category,
-  });
+  const params = { q, country, category };
+  const { data = { articles: [] } } = api(params);
   const { articles = [] } = data;
 
-  const [topNews, allNews] = [articles[0], articles.slice(1) || []];
+  const list = useMemo(() => {
+    return articles.map((item) => ({ ...item, key: uuidv4() }));
+  }, [articles]);
+
+  const [topNews, allNews] = [list[0], list.slice(1) || []];
 
   if (!topNews && allNews.length <= 0) return null;
 
@@ -46,7 +49,7 @@ export default function TopHeadLines() {
       )}
 
       {allNews?.map((article) => (
-        <Grid key={article.publishedAt} size={{ xs: 12, md: 6 }}>
+        <Grid key={article.key} size={{ xs: 12, md: 6 }}>
           <NewsCard article={article} />
         </Grid>
       ))}

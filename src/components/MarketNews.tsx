@@ -8,7 +8,7 @@ const MarketNews = () => {
   const { data = [], isLoading } = useMarketNewsQuery({ category: 'general' });
 
   if (isLoading) return null;
-  return data?.map((news) => (
+  return data?.map((news, index) => (
     <Fragment key={news.id}>
       <Grid size={12}>
         <NewsCard
@@ -28,13 +28,15 @@ const MarketNews = () => {
           }}
         />
       </Grid>
-      <Grid
-        size={12}
-        sx={{
-          borderTop: `1px solid ${colors.grey[400]}`,
-          height: '1px',
-        }}
-      />
+      {index !== data.length - 1 && (
+        <Grid
+          size={12}
+          sx={{
+            borderTop: `1px solid ${colors.grey[400]}`,
+            height: '1px',
+          }}
+        />
+      )}
     </Fragment>
   ));
 };

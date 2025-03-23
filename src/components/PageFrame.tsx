@@ -8,7 +8,7 @@ interface Props {
 export default function PageFrame(props: Props) {
   return (
     <Grid sx={{ px: { xs: 2, md: 0 } }} container justifyContent="center">
-      <Grid size={{ xs: 12, md: 11, lg: 9 }}>{props.children}</Grid>
+      <Grid size={{ xs: 12, md: 11, xl: 9 }}>{props.children}</Grid>
     </Grid>
   );
 }

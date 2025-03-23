@@ -8,6 +8,7 @@ import NewsCard from 'src/components/NewsCard';
 import { useNewsDataGetAllNewsQuery } from 'src/services/NewsData';
 import { convertNewsDataArticles } from 'src/Utils/convertNewsDataArticles';
 import Grid from '@mui/material/Grid2';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function AllNews() {
   const [searchParams] = useSearchParams();
@@ -16,24 +17,12 @@ export default function AllNews() {
   const date = searchParams.get('date') || undefined;
   const source = searchParams.get('source') || undefined;
   const country = searchParams.get('country') || undefined;
+  const params = { q, category, date, source, country };
 
-  const apiNews = useNewsApiGetAllNewsQuery({
-    q,
-    category,
-    date,
-    source,
-    country,
-  });
-  const newsData = useNewsDataGetAllNewsQuery({
-    q,
-    category,
-    date,
-    source,
-    country,
-  });
-  const guardian = useGetGuardianNewsQuery(
-    mapGuardinaParams({ q, category, date, source, country }),
-  );
+  const apiNews = useNewsApiGetAllNewsQuery(params);
+  const newsData = useNewsDataGetAllNewsQuery(params);
+  const guardian = useGetGuardianNewsQuery(mapGuardinaParams(params));
+
   const guardianNews = useMemo(
     () => convertGardianArticles(guardian.data),
     [guardian],
@@ -52,8 +41,12 @@ export default function AllNews() {
     ];
   }, [newsDataArticles, guardianNews, apiNews]);
 
-  return allNews.map((article) => (
-    <Grid key={article.title + article.content} size={{ xs: 12, md: 6 }}>
+  const allNewsWithUniqueKeys = useMemo(() => {
+    return allNews.map((item) => ({ ...item, key: uuidv4() }));
+  }, [allNews]);
+
+  return allNewsWithUniqueKeys.map((article) => (
+    <Grid key={article.key} size={{ xs: 12, md: 6 }}>
       <NewsCard article={article} />
     </Grid>
   ));

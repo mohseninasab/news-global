@@ -6,14 +6,21 @@ interface Props extends TypographyOwnProps {
 }
 
 export default function NewsHeadline(props: Props) {
-  return (
-    <a target="_blank" href={props.url}>
-      <Typography
-        sx={{ fontWeight: 900, lineHeight: 1.3 }}
-        variant={props.variant || 'h6'}
-      >
-        {props.title}
-      </Typography>
-    </a>
+  const title = (
+    <Typography
+      sx={{ fontWeight: 900, lineHeight: 1.3 }}
+      variant={props.variant || 'h6'}
+    >
+      {props.title}
+    </Typography>
   );
+
+  if (props.url)
+    return (
+      <a target="_blank" href={props.url}>
+        {title}
+      </a>
+    );
+
+  return title;
 }

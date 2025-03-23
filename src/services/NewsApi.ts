@@ -16,19 +16,18 @@ export const newsApi = createApi({
   endpoints: (builder) => ({
     newsApiGetAllNews: builder.query<NewsApiArticle, NewsApiParams>({
       query: (params: NewsApiParams) => {
-        const { q, source, date: from, category, country } = params;
-        if (q || source || from || category || country)
+        const { q, source, date: from, country } = params;
+        if (q || source || from || country)
           return {
             url: '/everything',
             params: {
               q,
               source,
-              category,
               from,
               country: country?.toLowerCase(),
             },
           };
-        return { url: '/everything?q=usa' };
+        return { url: '/everything', params: { q: 'usa' } };
       },
     }),
     newsApiGetTopHeadlines: builder.query<NewsApiArticle, TopLineParams>({

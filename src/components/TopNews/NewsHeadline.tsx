@@ -6,11 +6,18 @@ interface Props {
 }
 
 export default function NewsHeadline(props: Props) {
-  return (
-    <a target="_blank" href={props.url}>
-      <Typography sx={{ fontWeight: 900 }} variant="body1">
-        {props.title}
-      </Typography>
-    </a>
+  const title = (
+    <Typography sx={{ fontWeight: 900 }} variant="body1">
+      {props.title}
+    </Typography>
   );
+
+  if (props.url)
+    return (
+      <a target="_blank" href={props.url}>
+        {title}
+      </a>
+    );
+
+  return title;
 }

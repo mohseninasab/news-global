@@ -1,12 +1,26 @@
-import { List } from '@mui/material';
+import { List, SxProps } from '@mui/material';
 import REGIONS from 'src/constant/regions';
 import Region from './Region';
 
-export default function Cathegory() {
+interface ListItemProps {
+  sx?: SxProps;
+}
+interface Props {
+  sx?: SxProps;
+  listItemProps?: ListItemProps;
+}
+export default function Cathegory({ sx = {}, listItemProps = {} }: Props) {
   return (
-    <List sx={{ display: 'flex' }}>
+    <List
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: { xs: 'center' },
+        ...sx,
+      }}
+    >
       {REGIONS.map((region) => (
-        <Region key={region.value} region={region} />
+        <Region {...listItemProps} key={region.value} region={region} />
       ))}
     </List>
   );
