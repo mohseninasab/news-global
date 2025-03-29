@@ -1,10 +1,10 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NewsHeadline from 'src/components/NewsCard/NewsHeadline';
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Content from 'src/components/NewsCard/Content';
 import ReadTime from 'src/components/ReadTime';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import Source from 'src/components/Source';
 import { ExtractTimeAndContent } from 'src/Utils/ExtractTimeAndContent';
 import Author from 'src/components/Author';
@@ -18,15 +18,21 @@ interface Props {
 }
 
 export default function NewsPage(props: Props) {
-  const { state = { article: {} } } = useLocation();
-  const { title, urlToImage, content, source, author, url } = state.article;
+  const navigate = useNavigate();
+  const { state = {} } = useLocation();
+  const { article = {} } = state || {};
+  const { title, urlToImage, content, source, author, url } = article;
+
+  useEffect(() => {
+    if (!title) navigate('/');
+  }, [title, navigate]);
 
   const [text, time] = useMemo(
     () => ExtractTimeAndContent(content || ''),
     [content],
   );
 
-  if (state.article.title) {
+  if (title) {
     return (
       <>
         <Header />
